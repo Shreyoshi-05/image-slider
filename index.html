@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512- 
+     SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />        
+   
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(62, 33, 33);
+        }
+        #image{
+            background: url("1.jpg") center/cover no-repeat;
+            width: 30%;
+            height: 85vh;
+            background-color: aliceblue;
+            margin:40px auto;
+            border: 4px solid ;
+        }
+        .button pre{
+            height: 30px;
+            width: 30px;
+            background-color: rgb(228, 159, 55);
+        }
+        .button_pre{
+            position: absolute;
+            top: 50%;
+            background-color: rgb(116, 56, 245);
+            color: aliceblue;
+            padding: 10px;
+            border: 3px solid black;
+        }
+        .button_next{
+            position: absolute;
+            top: 50%;
+            right: 430px;
+            background-color: rgb(116, 56, 245);
+            color: aliceblue;
+            padding: 10px;
+            border: 3px solid black;
+            cursor: pointer;
+        }
+        
+    </style>
+
+
+</head>
+<body>
+    <div id="image">
+
+        <a href="" class="button button_pre"><i class="fa-solid fa-caret-left"></i></a>
+        <a href="" class="button button_next"><i class="fa-solid fa-caret-right"></i></a>
+    </div>
+
+    <script>
+
+        (function(){
+
+            let file =["1","2","3","4"]
+            
+
+            const btn = document.querySelectorAll(".button")
+            const container = document.querySelector("#image")
+
+            let slide = 0;
+            console.log(btn,container)
+
+            btn.forEach((button)=>{
+                button.addEventListener("click",(e)=>{
+                    e.preventDefault();
+
+                if(button.classList.contains("button_pre")){
+                    slide --;
+                    if(slide < 0){
+                        slide = file.length-1;
+                    }
+                    container.style.background = `url('${file[slide]}.jpg')`
+
+                } if(button.classList.contains("button_next")){
+                    slide ++;
+                    if(slide > file.length-1){
+                        slide = 0;
+                    }
+                    container.style.background = `url('${file[slide]}.jpg')`
+
+                }
+            })
+                
+            })
+
+        })()
+    </script>
+
+</body>
+</html>
